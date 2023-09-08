@@ -4,6 +4,7 @@ services:
   vlapiserver:
     build: ./docker/.
     command: bash run.sh
+    network_mode: "host"
     ulimits:
       stack: 67108864
       memlock: -1

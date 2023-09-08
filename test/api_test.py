@@ -124,21 +124,7 @@ def test_image(image_path: Optional[str]=None, count: int=1, url: Optional[str]=
     
     # pprint.pprint(res)
     # return res
-    
-def test_face(image_path: str, name: str, person_id: Optional[str] = None):
-    from api.processor.image_process import img_to_base64
-    import cv2
-    import time
-    
-    image_array = cv2.imread(image_path)
-    image_base64_str = img_to_base64(image_array)
-    
-    t_start = time.time()
-    res = API.add_face(face_base64str_img=image_base64_str, name=name, person_id=person_id)
-    t_pass = time.time() - t_start
-    
-    print(f"process time {str(t_pass * 1000)}")
-    print(res)
+
 
 def test_search(name: str):
     import time
@@ -172,19 +158,6 @@ def test_match(image_path: str, top_k: int = 10):
     print(f"process time {str(t_pass * 1000)}")
     print(res)
     
-def add_person():
-    import os
-    import secrets
-    
-    face_dir = "/mnt/fenglin/WiqunBot/api-llm-content-review/api_test/data/image/face/"
-    for name in os.listdir(face_dir):
-        name_dir = os.path.join(face_dir, name)
-        person_id = f"person-{secrets.token_hex(16)}"
-        if name == "胡耀邦":
-            continue
-        for image_name in os.listdir(name_dir):
-            param = {"image_path": os.path.join(name_dir, image_name), "name": name, "person_id": person_id}
-            test_face(**param)
 
 from PIL import Image, ImageDraw, ImageFont
 def cv2AddChineseText(img, text, position, textColor=(0, 255, 0), textSize=30):

@@ -62,7 +62,6 @@ class BaseModelAdapter:
             config_kwargs["device_map"] = "auto"
         # config = AutoConfig.from_pretrained(model_name_or_path, trust_remote_code=True)
 
-        print(config_kwargs)
         # Load and prepare pretrained models (without valuehead).
         model = self.model_class.from_pretrained(
             model_name_or_path,
