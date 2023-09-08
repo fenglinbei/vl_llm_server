@@ -1,0 +1,24 @@
+version: '3.10'
+
+services:
+  vlapiserver:
+    build: ./docker/.
+    command: bash run.sh
+    ulimits:
+      stack: 67108864
+      memlock: -1
+    env_file:
+      - .env
+    volumes:
+      - $PWD:/workspace
+      - /root/model/:/workspace/model/
+      # model path need to be specified if not in pwd
+    restart: always
+
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ['0']
+              capabilities: [gpu]

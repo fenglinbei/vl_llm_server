@@ -1,0 +1,4 @@
+fastapi==0.103.1
+python-dotenv==0.19.2
+loguru==0.7.1
+transformers-stream-generator==0.0.4
