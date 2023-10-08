@@ -24,10 +24,13 @@ from api.routes.utils import check_requests, create_error_response
 
 chat_router = APIRouter(prefix="/chat")
 
-@chat_router.post("/completions")
-async def create_chat_completion(raw_request: Request):
-    request = ChatCompletionRequest(**await raw_request.json())
-    # logger.debug(f"Received chat completion request: {request}")
+@chat_router.post("/completions",
+                  summary="多模态模型交互接口",
+                  description="多模态模型交互的api接口，使用Qewn-VL-Chat模型。具体接口参数见Schemas",
+                  response_model=ChatCompletionResponse,
+                  response_description="交互处理成功")
+async def create_chat_completion(request: ChatCompletionRequest):
+    logger.debug(f"Received chat completion request: {request}")
     
     error_check_ret = check_requests(request)
     if error_check_ret is not None:

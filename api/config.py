@@ -8,6 +8,7 @@ dotenv.load_dotenv()
 DEFAULTS = {
     'HOST': '0.0.0.0',
     'PORT': 5006,
+    'LOG_PATH': './api/log/',
     'MODEL_NAME': 'Qwen-VL-Chat',
     'MODEL_PATH': './model/models--Qwen--Qwen-VL-Chat/snapshots/96a960aacb911cd09def34dc679bdb81f60e6110/',
     'DEVICE': 'cuda',
@@ -52,6 +53,7 @@ class Config:
         self.HOST = get_env('HOST')
         self.PORT = int(get_env('PORT'))
 
+        self.LOG_PATH = get_env('LOG_PATH')
         self.MODEL_NAME = get_env('MODEL_NAME')
         self.MODEL_PATH = get_env('MODEL_PATH')
         self.ADAPTER_MODEL_PATH = get_env('ADAPTER_MODEL_PATH') if get_env('ADAPTER_MODEL_PATH') else None

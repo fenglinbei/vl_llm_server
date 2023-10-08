@@ -3,6 +3,7 @@ import time
 
 sys.path.insert(0, ".")
 
+from loguru import logger
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -13,7 +14,10 @@ from api.routes.utils import create_error_response
 from api.utils.protocol import FileException
 from api.utils.constants import ErrorCode
 
-app = FastAPI()
+logger.remove(handler_id=None)
+logger.add(config.LOG_PATH + "server.log", format="{time} {level} {message}", filter="", level="DEBUG")
+
+app = FastAPI(title="多模LLm交互API接口 V1.1")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -31,7 +35,7 @@ async def add_process_time_header(request: Request, call_next):
     return response
 
 @app.exception_handler(FileException)
-async def file_exception_handler(exc: FileException):
+async def file_exception_handler(request , exc: FileException):
     return create_error_response(code=exc.code, message=exc.msg)
 
 

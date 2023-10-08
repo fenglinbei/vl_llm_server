@@ -7,7 +7,7 @@ from api.utils.protocol import ErrorResponse
 
 
 def create_error_response(code: int, message: str) -> JSONResponse:
-    return JSONResponse(ErrorResponse(message=message, code=code).model_dump(), status_code=500)
+    return JSONResponse(ErrorResponse(message=message, code=code), status_code=500)
 
 
 def check_requests(request) -> Optional[JSONResponse]:
