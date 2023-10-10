@@ -63,6 +63,7 @@ class BaseModelAdapter:
         # config = AutoConfig.from_pretrained(model_name_or_path, trust_remote_code=True)
 
         # Load and prepare pretrained models (without valuehead).
+        print(config_kwargs)
         model = self.model_class.from_pretrained(
             model_name_or_path,
             # config=config,
