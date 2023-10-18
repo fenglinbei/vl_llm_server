@@ -70,7 +70,7 @@ async def create_chat_completion(request: ChatCompletionRequest):
         if len(boxes) == 0:
             message = ChatMessage(role=Role.ASSISTANT, content_type=ContentType.TEXT, content=Content(text=content["text"]))
         else:
-            message = ChatMessage(role=Role.ASSISTANT, content_type=ContentType.BOX, content=Content(box=boxes))
+            message = ChatMessage(role=Role.ASSISTANT, content_type=ContentType.BOX, content=Content(box=boxes, text=content["text"]))
 
         choices.append(
             ChatCompletionResponseChoice(
