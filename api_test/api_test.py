@@ -73,7 +73,7 @@ class Api:
         
         return response
         
-API = Api(server="http://192.168.1.210:5006/v1")
+API = Api(server="http://192.168.1.40:5006/v1")
 
 def run(main_func=None):
     loop = asyncio.new_event_loop()

@@ -50,9 +50,9 @@ def _get_args():
                         help="Create a publicly shareable link for the interface.")
     parser.add_argument("--inbrowser", action="store_true", default=False,
                         help="Automatically launch the interface in a new tab on the default browser.")
-    parser.add_argument("--server-port", type=int, default=8000,
+    parser.add_argument("--server-port", type=int, default=6006,
                         help="Demo server port.")
-    parser.add_argument("--server-name", type=str, default="192.168.1.210",
+    parser.add_argument("--server-name", type=str, default="192.168.1.40",
                         help="Demo server name.")
 
     args = parser.parse_args()

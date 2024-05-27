@@ -12,7 +12,7 @@ services:
       - .env
     volumes:
       - $PWD:/workspace
-      - /root/model/:/workspace/model/
+      - /mnt/fenglin/model/:/workspace/model/
       # model path need to be specified if not in pwd
     restart: always
 
